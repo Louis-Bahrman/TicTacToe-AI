@@ -23,11 +23,10 @@ public class Player {
              
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
-<<<<<<< HEAD
+
         Arbitre a = new Arbitre(grille, joueurOrdi , joueurOrdi );
-=======
+
         Arbitre a = new Arbitre(grille, joueurOrdi , humain );
->>>>>>> 4dd14568c244c833d17b679f8f3b340f997c8d04
        
         a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
        
