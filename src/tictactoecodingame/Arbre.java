@@ -13,36 +13,48 @@ import java.util.ArrayList;
  */
 public class Arbre {
     
-    private int value;
+    private Fraction value;
     private ArrayList<Coup> coups;
     private ArrayList<Arbre> fils;
     
     // Les constructeurs :
-    public Arbre (int value, ArrayList coups, ArrayList fils){
+    public Arbre (Fraction value, ArrayList coups, ArrayList fils){
         this.value = value;
         this.fils = fils;
         this.coups = coups;
     }
     
-    public Arbre (int value, Plateau _plateau, Joueur _joueur){
+    public Arbre (int den, int num, ArrayList coups, ArrayList fils){
+        this.value.den = den;
+        this.value.num = num;
+        this.fils = fils;
+        this.coups = coups;
+    }
+    
+    public Arbre (Fraction value, Plateau _plateau, Joueur _joueur){
         this.value = value;
         this.coups = _plateau.getListeCoups(_joueur) ;
         int a = coups.size();
         fils = new ArrayList();
         for(int i = 0; i < a ; i++){
-            Arbre Arbre_i = new Arbre(0); // Attention ! Ce constructeur initialise donc avec des valeurs nulles en racine !
+            Arbre Arbre_i = new Arbre(new Fraction()); // Attention ! Ce constructeur initialise donc avec des valeurs nulles en racine !
             fils.add(Arbre_i);
         }
         
     }
     
-    public Arbre (int value){
+    public Arbre (Fraction value){
         this.value = value;
+    }
+    
+    public Arbre (int den, int num){
+        this.value.den = den;
+        this.value.num = num;
     }
     
     // Les accesseurs :
     public double getvalue(){
-        return(value);
+        return(value.getNote());
     }
     
     public ArrayList getfils(){
@@ -54,7 +66,7 @@ public class Arbre {
     }
     
     //Des choses sans nom :
-    public void setvalue(int value){
+    public void setvalue(Fraction value){
         this.value = value;
     }
     
