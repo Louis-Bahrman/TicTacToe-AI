@@ -24,7 +24,7 @@ public class Player {
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
 
-        Arbitre a = new Arbitre(grille, joueurOrdi , joueurOrdi );
+        //Arbitre a = new Arbitre(grille, joueurOrdi , joueurOrdi );
 
         Arbitre a = new Arbitre(grille, joueurOrdi , humain );
        

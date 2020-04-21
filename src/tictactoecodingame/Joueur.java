@@ -33,4 +33,8 @@ public abstract class Joueur {
 	public String toString() {
 		return nom;
 	}
+        
+        public void forceId(int id){
+            idJoueur = id;
+        }
 }
