@@ -11,7 +11,6 @@ import java.util.ArrayList;
  *
  * @author senda
  */
-<<<<<<< HEAD:src/tictactoecodingame/ArbreMCTS.java
 public class ArbreMCTS {
     
     private Fraction value;
@@ -20,30 +19,13 @@ public class ArbreMCTS {
     
     // Les constructeurs :
     public ArbreMCTS (Fraction value, ArrayList coups, ArrayList fils){
-=======
-public class Arbre {
-    public static int N = 5;
-    protected Fraction value;
-    protected ArrayList<Coup> coups;
-    protected ArrayList<Arbre> fils;
-    
-    // Les constructeurs :
-    
-    public Arbre(){   
-    }
-    
-    public Arbre (Fraction value, ArrayList coups, ArrayList fils){
->>>>>>> 354446df7750de3c8bc24e57f0a58c2fce1347bf:src/tictactoecodingame/Arbre.java
         this.value = value;
         this.fils = fils;
         this.coups = coups;
     }
     
-<<<<<<< HEAD:src/tictactoecodingame/ArbreMCTS.java
+
     public ArbreMCTS (int den, int num, ArrayList coups, ArrayList fils){
-=======
-    public Arbre (int num, int den, ArrayList coups, ArrayList fils){
->>>>>>> 354446df7750de3c8bc24e57f0a58c2fce1347bf:src/tictactoecodingame/Arbre.java
         this.value.den = den;
         this.value.num = num;
         this.fils = fils;
@@ -66,11 +48,8 @@ public class Arbre {
         this.value = value;
     }
     
-<<<<<<< HEAD:src/tictactoecodingame/ArbreMCTS.java
+
     public ArbreMCTS (int den, int num){
-=======
-    public Arbre (int num, int den){
->>>>>>> 354446df7750de3c8bc24e57f0a58c2fce1347bf:src/tictactoecodingame/Arbre.java
         this.value.den = den;
         this.value.num = num;
     }
