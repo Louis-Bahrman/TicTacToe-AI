@@ -26,7 +26,7 @@ public class Player {
 
         Arbitre a = new Arbitre(grille, joueurOrdi , joueurOrdi );
 
-        Arbitre a = new Arbitre(grille, joueurOrdi , humain );
+//        Arbitre a = new Arbitre(grille, joueurOrdi , humain );
        
         a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
        
