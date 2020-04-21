@@ -6,6 +6,7 @@
 package tictactoecodingame;
 
 import java.util.ArrayList;
+import static tictactoecodingame.Generator.random_tests;
 
 /**
  *
@@ -13,7 +14,6 @@ import java.util.ArrayList;
  */
 public class ArbreMinMax {
     
-    public static int N = 5;
     protected int value;
     protected ArrayList<Coup> coups;
     protected ArrayList<ArbreMinMax> fils;
@@ -53,9 +53,14 @@ public class ArbreMinMax {
     }
     
     public ArrayList<ArbreMinMax> getfils(){
-        return(fils);
+        if(fils != null){
+            return(fils);
+        }
+        else{
+            return null;
+        }
     }
-       
+    
     public ArrayList getcoups(){
         return(coups);
     }
@@ -123,29 +128,27 @@ public class ArbreMinMax {
         return m;
     }
     
-    public void MinMax(int h){
-        // h = hauteur, on l'incrémente comme un compteur 
-        // N est la profondeur à explorer en MinMax, toutes les feuilles en N+1 sont évaluées
-        // La racine est un Max, donc impair -> Max, pair -> Min
-        if(N >= h){ // On doit chosir entre min et max
-            if(h%2 == 0){
-                //On attribue le Min
-                int m = this.Min();
-                this.setvalue(m);
-                
-            }
-            else{
-                //On attribue le max
-                int m = this.Max();
-                this.setvalue(m);
-            }
+    public void MinMax(int c){
+        // c = compteur 
+        // Le compteur doit être initialisé à 0 donc pair -> Max, impair -> Min
+        
+        if(this.getfils() != null){
             int a = this.getfils().size();
             for(int i = 0; i < a ; i++){
-                this.getfils().get(i).MinMax(h + 1);
-            } 
+                 this.getfils().get(i).MinMax(c+1);
+            }
         }
-        else{//On a h > N, on utilise la fonction d'évaluation
-            
+        
+        if(c%2 == 0){
+            //On attribue le Min
+            int m = this.Min();
+            this.setvalue(m);   
+            }
+        else{
+            //On attribue le max
+            int m = this.Max();
+            this.setvalue(m);
+            }
         }
+        
     }
-}
