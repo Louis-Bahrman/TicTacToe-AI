@@ -6,6 +6,7 @@
 package tictactoecodingame;
 
 import java.util.ArrayList;
+import static tictactoecodingame.Generator.random_tests;
 
 /**
  *
@@ -123,7 +124,7 @@ public class ArbreMinMax {
         return m;
     }
     
-    public void MinMax(int h){
+    public void MinMax(int h,Plateau plateau, int nb_tests){
         // h = hauteur, on l'incrémente comme un compteur 
         // N est la profondeur à explorer en MinMax, toutes les feuilles en N+1 sont évaluées
         // La racine est un Max, donc impair -> Max, pair -> Min
@@ -141,11 +142,11 @@ public class ArbreMinMax {
             }
             int a = this.getfils().size();
             for(int i = 0; i < a ; i++){
-                this.getfils().get(i).MinMax(h + 1);
+                this.getfils().get(i).MinMax(h + 1,plateau,nb_tests);
             } 
         }
         else{//On a h > N, on utilise la fonction d'évaluation
-            
+            int i = random_tests(plateau,nb_tests);
         }
     }
 }
