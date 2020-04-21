@@ -63,11 +63,11 @@ public class ArbreMCTS {
         return(value.getNote());
     }
     
-    public ArrayList<Arbre> getfils(){
+    public ArrayList<ArbreMCTS> getfils(){
         return(fils);
     }
        
-    public ArrayList getcoups(){
+    public ArrayList<Coup> getcoups(){
         return(coups);
     }
     
