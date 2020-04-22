@@ -15,12 +15,18 @@ public class ArbreMinMax {
     
     public static int N = 5;
     protected int value;
+    //Coup théorique joué à ce noeud
+    protected Coup coup;
     protected ArrayList<Coup> coups;
     protected ArrayList<ArbreMinMax> fils;
     
     // Les constructeurs :
     
     public ArbreMinMax(){   
+    }
+    
+    public ArbreMinMax(Coup coup){
+        this.coup = coup;
     }
     
     public ArbreMinMax(int value, ArrayList coups, ArrayList fils){
@@ -55,7 +61,11 @@ public class ArbreMinMax {
     public ArrayList<ArbreMinMax> getfils(){
         return(fils);
     }
-       
+    
+    public Coup getcoup(){
+        return coup;
+    }
+    
     public ArrayList getcoups(){
         return(coups);
     }
