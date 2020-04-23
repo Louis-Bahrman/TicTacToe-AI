@@ -12,19 +12,23 @@ import java.util.ArrayList;
  * @author senda
  */
 public class Arbre {
-    
-    private Fraction value;
-    private ArrayList<Coup> coups;
-    private ArrayList<Arbre> fils;
+    public static int N = 5;
+    protected Fraction value;
+    protected ArrayList<Coup> coups;
+    protected ArrayList<Arbre> fils;
     
     // Les constructeurs :
+    
+    public Arbre(){   
+    }
+    
     public Arbre (Fraction value, ArrayList coups, ArrayList fils){
         this.value = value;
         this.fils = fils;
         this.coups = coups;
     }
     
-    public Arbre (int den, int num, ArrayList coups, ArrayList fils){
+    public Arbre (int num, int den, ArrayList coups, ArrayList fils){
         this.value.den = den;
         this.value.num = num;
         this.fils = fils;
@@ -47,7 +51,7 @@ public class Arbre {
         this.value = value;
     }
     
-    public Arbre (int den, int num){
+    public Arbre (int num, int den){
         this.value.den = den;
         this.value.num = num;
     }
@@ -57,12 +61,16 @@ public class Arbre {
         return(value.getNote());
     }
     
-    public ArrayList getfils(){
+    public ArrayList<Arbre> getfils(){
         return(fils);
     }
-    
+       
     public ArrayList getcoups(){
         return(coups);
+    }
+    
+    public Fraction getFrac(){
+        return(this.value);
     }
     
     //Des choses sans nom :

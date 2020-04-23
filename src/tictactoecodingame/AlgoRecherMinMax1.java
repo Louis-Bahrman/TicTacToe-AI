@@ -11,11 +11,11 @@ import java.util.ArrayList;
 /**
  *
  * @author senda
- */
+ 
 public class AlgoRecherMinMax1 extends AlgoRecherche {
     ArrayList ListCoup;
     
-    public AlgoRecherMinMax1() {
+    /*public AlgoRecherMinMax1() {
               
     }
     
@@ -26,4 +26,12 @@ public class AlgoRecherMinMax1 extends AlgoRecherche {
         
         return ;
     }
-}
+}*/
+
+/* L'idée c'est :
+- Créer un arbre de coups :
+    On récupère les coups dispo
+    On fait toutes les possibilités d'enchaînement de coups (<N, <MaxCoupsRestants)
+- On applique MinMax
+- On rend le meilleur coup selon notre algorythme
+*/
