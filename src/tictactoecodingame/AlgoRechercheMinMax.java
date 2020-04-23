@@ -65,7 +65,17 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
         }
         ArbreMinMax explore = new ArbreMinMax();
         builder(explore, target, 0);
-        
+        explore.MinMax(0);
+        int m = Integer.MIN_VALUE;
+        Coup c = null;
+        for(int i = 0; i < explore.getfils().size() ; i++){
+            int n = explore.getfils().get(i).getvalue();
+            if(n > m){
+                m = n;
+                c = explore.getfils().get(i).getcoup();
+            }
+        }
+        return c;
     }
     
     //Fonction auxiliaire récursive de création de l'arbre des coups possibles

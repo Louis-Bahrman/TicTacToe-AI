@@ -71,7 +71,7 @@ public class ArbreMinMax {
         return coup;
     }
     
-    public ArrayList getcoups(){
+    public ArrayList<Coup> getcoups(){
         return(coups);
     }
     
