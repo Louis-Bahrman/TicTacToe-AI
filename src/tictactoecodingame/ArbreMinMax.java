@@ -15,12 +15,18 @@ import static tictactoecodingame.Generator.random_tests;
 public class ArbreMinMax {
     
     protected int value;
+    //Coup théorique joué à ce noeud
+    protected Coup coup;
     protected ArrayList<Coup> coups;
     protected ArrayList<ArbreMinMax> fils;
     
     // Les constructeurs :
     
     public ArbreMinMax(){   
+    }
+    
+    public ArbreMinMax(Coup coup){
+        this.coup = coup;
     }
     
     public ArbreMinMax(int value, ArrayList coups, ArrayList fils){
@@ -59,6 +65,10 @@ public class ArbreMinMax {
         else{
             return null;
         }
+    }
+    
+    public Coup getcoup(){
+        return coup;
     }
     
     public ArrayList getcoups(){

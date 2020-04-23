@@ -10,7 +10,7 @@ package tictactoecodingame;
  * @author Théo
  */
 public class Generator {
-    public static int random_tests(Plateau plateau, int nb_tests) {
+    public static int random_tests(Plateau plateau, int nb_tests,Joueur target) {
         int c = 0;
         JoueurOrdi player = new JoueurOrdi("player");
         JoueurOrdi opponent = new JoueurOrdi("oppo");
@@ -39,9 +39,9 @@ public class Generator {
             }
 
             Joueur vainqueur = plateau.vainqueur();
-            if ( vainqueur == player )
+            if ( vainqueur.getIdJoueur() == target.getIdJoueur() )
                 c++;
-            else if ( vainqueur == player )
+            else if ( vainqueur.getIdJoueur() != target.getIdJoueur() )
                 c--;
             plateau.restaurePosition(0);
         }
