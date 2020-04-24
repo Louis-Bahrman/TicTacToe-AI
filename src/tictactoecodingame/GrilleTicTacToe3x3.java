@@ -81,8 +81,7 @@ public class GrilleTicTacToe3x3 extends Plateau {
             return false;
         }
 
-        Joueur dernierJoueur = dernierCoup.getJeton()
-                .getJoueur();
+        Joueur dernierJoueur = dernierCoup.getJeton().getJoueur();
 
         /* Regarde si le dernier coup est gagnant */
         for (int d = 0; d < 4; d++) {

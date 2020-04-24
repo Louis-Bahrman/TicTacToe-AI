@@ -44,8 +44,6 @@ public class Selection {
             int nbSimulPereNew=arbreSelectionne.getFraction().getDenominateur();
             s.chemin.add(indiceSelection);
             return SelectionAux(c,arbreSelectionne,s,nbSimulPereNew);
-        }
-        
-        
+        }       
     }
 }
