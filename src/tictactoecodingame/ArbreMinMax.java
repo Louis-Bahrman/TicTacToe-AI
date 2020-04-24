@@ -115,7 +115,7 @@ public class ArbreMinMax {
     }
     
     public int Min(){
-        int m = 2147483640;
+        int m = Integer.MAX_VALUE;
         int a = this.getfils().size();
         for(int i = 0; i < a ; i++){
             int n = this.getfils().get(i).getvalue();
@@ -127,7 +127,7 @@ public class ArbreMinMax {
     }
     
     public int Max(){
-        int m = 0;
+        int m = Integer.MIN_VALUE;
         int a = this.getfils().size();
         for(int i = 0; i < a ; i++){
             int n = this.getfils().get(i).getvalue();
@@ -142,23 +142,22 @@ public class ArbreMinMax {
         // c = compteur 
         // Le compteur doit être initialisé à 0 donc pair -> Max, impair -> Min
         
-        if(this.getfils() != null){
+        if(!this.estFeuille()){
             int a = this.getfils().size();
             for(int i = 0; i < a ; i++){
                  this.getfils().get(i).MinMax(c+1);
             }
-        }
-        
-        if(c%2 == 0){
-            //On attribue le Min
-            int m = this.Min();
-            this.setvalue(m);   
+            if(c%2 == 0){
+                //On attribue le max
+                int m = this.Max();
+                this.setvalue(m);   
             }
-        else{
-            //On attribue le max
-            int m = this.Max();
-            this.setvalue(m);
+            else{
+                //On attribue le min
+                int m = this.Min();
+                this.setvalue(m);
             }
         }
-        
     }
+    
+}

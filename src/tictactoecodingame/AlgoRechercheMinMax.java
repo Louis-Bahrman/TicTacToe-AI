@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class AlgoRechercheMinMax extends AlgoRecherche{
     
     /*La profondeur de recherche demandée doit être supérieure à 1 et inférieure
-    à 100, en pratique la croissance est factorielle en mémoire donc en ne
-    dépassera pas 10*/
+    à 98 (On commence à 0 et l'emplacement 99 est utilisée par le générateur), 
+    en pratique la croissance est factorielle en mémoire donc en ne dépassera pas 10*/
     private int depth;
     private Plateau plateau;
     private Joueur target;
@@ -57,6 +57,7 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
     }
     
     public Coup meilleurCoup( Plateau _plateau , Joueur _joueur , boolean _ponder ){
+        //On part du principe que la partie n'est pas terminée donc qu'il reste au moins un coup
         plateau = _plateau;
         plateau.sauvegardePosition(0);
         if(target != _joueur){
@@ -75,6 +76,7 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
                 c = explore.getfils().get(i).getcoup();
             }
         }
+        plateau.restaurePosition(0);
         return c;
     }
     
@@ -91,35 +93,21 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
         }
         //On crée les nouveau noeuds à partir des coups disponible du point de vue du joueur à ce niveau de l'arbre
         ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
-        //On part du principe que la partie n'est pas terminée donc qu'il reste au moins un coup
-        if(coups.size()==1){
-            plateau.joueCoup(coups.get(0));
-            ArrayList<ArbreMinMax> fils = new ArrayList<ArbreMinMax>();
-            ArbreMinMax a = new ArbreMinMax(coups.get(0));
+        if(plateau.partieTerminee()){
             Joueur winner = plateau.vainqueur();
-                if(winner == target){
-                    a.setvalue(1);
-                }
-                else if(winner == opponent){
-                    a.setvalue(-1);
-                }
-                else {
-                    a.setvalue(0);
-                }
-            fils.add(a);
-            t.setfils(fils);
-        }
-        else if (currentDepth == depth - 1){
-            ArrayList<ArbreMinMax> fils = new ArrayList<ArbreMinMax>();
-            for(int i=0; i<coups.size();i++){
-                plateau.joueCoup(coups.get(i));
-                ArbreMinMax a = new ArbreMinMax(coups.get(i));
-                int c = Generator.random_tests(plateau, d_gen, target);
-                a.setvalue(c);
-                fils.add(a);
-                plateau.annuleDernierCoup();
+            if(winner == target){
+                t.setvalue(1);
             }
-            t.setfils(fils);
+            else if(winner == opponent){
+                t.setvalue(-1);
+            }
+            else {
+                t.setvalue(0);
+            }
+        }
+        else if (currentDepth == depth){
+            int c = Generator.random_tests(plateau, d_gen, target);
+            t.setvalue(c);
         }
         else{
             ArrayList<ArbreMinMax> fils = new ArrayList<ArbreMinMax>();

@@ -23,7 +23,7 @@ public class Generator {
         opponent.forceId(i);
         
         Coup coup;
-        plateau.sauvegardePosition(0);
+        plateau.sauvegardePosition(99);
         for(i=0; i<nb_tests;i++){
             while (!plateau.partieTerminee()) {
                 coup = currentPlayer.joue(plateau);
@@ -39,11 +39,13 @@ public class Generator {
             }
 
             Joueur vainqueur = plateau.vainqueur();
-            if ( vainqueur.getIdJoueur() == target.getIdJoueur() )
-                c++;
-            else if ( vainqueur.getIdJoueur() != target.getIdJoueur() )
-                c--;
-            plateau.restaurePosition(0);
+            if(vainqueur != null){
+                if ( vainqueur.getIdJoueur() == target.getIdJoueur() )
+                    c++;
+                else if ( vainqueur.getIdJoueur() != target.getIdJoueur() )
+                    c--;
+            }
+            plateau.restaurePosition(99);
         }
         return c;
     }
