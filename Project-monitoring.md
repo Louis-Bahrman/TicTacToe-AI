@@ -17,5 +17,6 @@ Groupe : Louis Bahrman, Bruce Hersemeule, Timothy Laird, Théo Delbecq
 |Arbre MinMax	|Structure d'arbre pour MinMax et algo de remontée|21/04/2020|Bruce|b599e9988c324c551aa4e4cdb9a95cd327db1b99  |Fini |
 |AlgoRechercheMinMax	 	|Algo de recherche créant un arbre des coups de la profondeur souhaitée pour un joueur et attribuant une valeur à chaque coup selon l'algo du MinMax	|21/04/2020	|Théo		|60b5f5a77e617c392e1c855ffaa64c557606c6a0 |A tester |
 |AlgoRechercheMCTS |Algo de création et parcours d'arbre des coups et recherche selon l'algo de Monte-Carlo |21/04/2020 |Louis, Timothy | |En cours |
+|Monitoring	 	|Plannification et enregistrement des briques fonctionnelles du projet dans le fichier monitoring		|21/04/2020		|Tous		|:--- |En cours |
 |Tests locaux et correction |Tests des performances des différents algo en local et correction en commun |27/04/2020 |Tous | |A venir |
 |Mise en place CodinGame |Conversion du code et mise en place des tests sur la plateforme CodinGame |27/04/2020 |Tous | |A venir |
