@@ -8,7 +8,7 @@ Groupe : Louis Bahrman, Bruce Hersemeule, Timothy Laird, Théo Delbecq
 |Nom		|Description	|Séance		|Responsable	|Commit |Etat |Commentaires
 |:---	 	|:---		|:---		|:---		|:--- |:--- |:---
 |Prise en main	 	|Formation du groupe, choix du projet, lecture des documents, installation des environnements java requis, découverte du code fourni et tests de ses fonctionnalités		|30/03/2020		|Tous		| |Fini |
-|Mise en place du dépôt	 	|Création du dépôt, clonage en local et création de branches individuelles		|30/03/2020		|Louis		|7b8fed5436e8048c51c02041374defd4c5022e32 |Fini |[url du dépôt](gvipers.imt-lille-douai.fr/louis.bahrman/groupe3-tictactoe/tree/master)
+|Mise en place du dépôt	 	|Création du dépôt, clonage en local et création de branches individuelles		|30/03/2020		|Louis		|7b8fed5436e8048c51c02041374defd4c5022e32 |Fini |[url du dépôt](https://gvipers.imt-lille-douai.fr/louis.bahrman/groupe3-tictactoe/tree/master)
 |Apprentissage git	 	|Apprentissage des commandes et des méthodes d'utilisation de git		|31/03/2020		|Tous		| |En cours |
 |Fraction	|Structure de fraction pour les arbres MCTS|20/04/2020|Louis|f159fbc27aafe0f3e7fd85a7e53024dbe748e191  |Fini |
 |Arbre générique|Structure d'arbre commune aux 2 algorithmes|20/04/2020|Bruce|3415d259df15dea293f5d45a6541a75b5c690c27  |Fini |
