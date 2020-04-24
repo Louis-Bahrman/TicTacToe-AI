@@ -1,4 +1,5 @@
 #Project Monitoring :
+=====================
 
 Projet : TicTacToe
 
@@ -7,6 +8,7 @@ N° Groupe : 3
 Groupe : Louis Bahrman, Bruce Hersemeule, Timothy Laird, Théo Delbecq
 
 #Briques fonctionelles
+----------------------
 
 |Nom		|Description	|Séance		|Responsable	|Commit |Etat |Commentaires
 |:---	 	|:---		|:---		|:---		|:--- |:--- |:---
