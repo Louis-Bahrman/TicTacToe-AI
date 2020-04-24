@@ -16,6 +16,6 @@ Groupe : Louis Bahrman, Bruce Hersemeule, Timothy Laird, Théo Delbecq
 |Generator |Générateur de fin de partie aléatoire permettant d'estimer la valeur d'un coup par estimation statistique		|20/04/2020		|Théo		|ad4f63446c6a351028d7fd923a379fc4dc327715  |Fini |
 |Arbre MinMax	|Structure d'arbre pour MinMax et algo de remontée|21/04/2020|Bruce|b599e9988c324c551aa4e4cdb9a95cd327db1b99  |Fini |
 |AlgoRechercheMinMax	 	|Algo de recherche créant un arbre des coups de la profondeur souhaitée pour un joueur et attribuant une valeur à chaque coup selon l'algo du MinMax	|21/04/2020	|Théo		|60b5f5a77e617c392e1c855ffaa64c557606c6a0 |A tester |
-|AlgoRechercheMCTS |Algo de création et parcours d'arbre des coups et recherche selon l'algo de Monte-Carlo |21/04/2020 |Timothy | |En cours |
+|AlgoRechercheMCTS |Algo de création et parcours d'arbre des coups et recherche selon l'algo de Monte-Carlo |21/04/2020 |Louis, Timothy | |En cours |
 |Tests locaux et correction |Tests des performances des différents algo en local et correction en commun |27/04/2020 |Tous | |A venir |
 |Mise en place CodinGame |Conversion du code et mise en place des tests sur la plateforme CodinGame |27/04/2020 |Tous | |A venir |
