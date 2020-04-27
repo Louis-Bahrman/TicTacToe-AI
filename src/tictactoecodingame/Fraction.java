@@ -5,53 +5,35 @@
  */
 package tictactoecodingame;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author louis
  */
 public class Fraction {
-    int num;
-    int den;
     
-    public Fraction(int n, int d){
-        num=n;
-        den=d;
-    }
-    
-    public Fraction(){
-        num=0;
-        den=0;
-    }
-    
-    public Fraction(int n){
-        num=n;
-        den=1;
-    }
-    
-    public int getScore(){
-        return num;
-    }
-            
-    public double getNote(){
-        try{
-            return num/den;
+    public static double frctValue(int parentVisit, int visits, int wins){
+        if(visits == 0){
+            return Integer.MAX_VALUE;
         }
-        catch(ArithmeticException e){return 1.;}
+        return (wins/visits) * 1.41 * Math.sqrt(Math.log(parentVisit) / visits);
     }
     
-    public int getNumerateur(){
-        return num;
+    public static Node bestChild(Node root){
+        int parentVisit = root.visits();
+        int maxIndex = 0;
+        double maxScore = 0;
+        ArrayList<Node> children = root.children();
+        double currentScore; Node currentNode;
+        for(int i = 0; i < children.size(); i++){
+            currentNode = children.get(i);
+            currentScore = frctValue(parentVisit, currentNode.visits(), currentNode.wins());
+            if(currentScore > maxScore){
+                maxScore = currentScore;
+                maxIndex = i;
+            }
+        }
+        return children.get(maxIndex);
     }
-    
-    public int getDenominateur(){return den;}
-    
-    public void setDenominateur(int d){den=d;}
-    
-    public void setNumerateur(int n){
-        num=n;
-    }
-    
-    public void incrementeNumerateur(){num+=1;}
-    
-    public void incrementeDenominateur(){den+=1;}
 }
