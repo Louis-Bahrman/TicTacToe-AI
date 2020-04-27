@@ -2,24 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Coup.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/CoupTicTacToe.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Player.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/AlgoRecherMinMax1.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Joueur.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/JoueurOrdi.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/AlgoRecherche.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/JoueurHumain.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Jeton.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Case.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Plateau.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Arbitre.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/AlgoRechercheAleatoire.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Generator.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/GrilleTicTacToe3x3.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/GrilleTicTacToe9x9.java</file>
-            <file>file:/C:/Users/theo/Documents/Ecole/IMT%20Lille%20Douai/L3/Projet%20Info/groupe3-tictactoe/src/tictactoecodingame/Piece.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
