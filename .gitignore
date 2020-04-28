@@ -16,7 +16,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
@@ -31,7 +31,7 @@ hs_err_pid*
 **/nbproject/private/
 **/nbproject/Makefile-*.mk
 **/nbproject/Package-*.bash
-build/
+#build/
 nbbuild/
 dist/
 nbdist/
