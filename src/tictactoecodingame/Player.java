@@ -19,11 +19,11 @@ public class Player {
        
         
 
-        AlgoRechercheMinMax minmax  = new AlgoRechercheMinMax(9, 100, joueurOrdi1, joueurOrdi2);
+        AlgoRechercheMinMax minmax  = new AlgoRechercheMinMax(3, 10, joueurOrdi1, joueurOrdi2);
         joueurOrdi1.setAlgoRecherche(minmax);
         joueurOrdi2.setAlgoRecherche(minmax);
              
-        GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
+        GrilleTicTacToe9x9 grille = new GrilleTicTacToe9x9();
          
 
         Arbitre a = new Arbitre(grille, joueurOrdi1 , joueurOrdi2);
