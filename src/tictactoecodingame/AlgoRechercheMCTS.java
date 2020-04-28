@@ -14,17 +14,17 @@ import java.util.Random;
  * @author timot
  */
 public class AlgoRechercheMCTS extends AlgoRecherche {
-    Arbre search;
+    ArbreMCTS search;
     
     public AlgoRechercheMCTS(Joueur player, Joueur opponent){
-        search = new Arbre(player, opponent);
+        search = new ArbreMCTS(player, opponent);
     }
     
     @Override
     public Coup meilleurCoup(Plateau _plateau, Joueur _joueur, boolean _ponder) {
-        search = new Arbre(search.root().player(), search.root().opponent());
+        search = new ArbreMCTS(search.root().player(), search.root().opponent());
         Node root = search.root();
-        root.board((new Node(_plateau)).board());
+        root.board(_plateau);
         int iterations = 0;
         Random seed = new Random();
         while(iterations < 1){

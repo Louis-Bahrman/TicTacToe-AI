@@ -9,10 +9,10 @@ package tictactoecodingame;
  *
  * @author timot
  */
-public class Arbre {
+public class ArbreMCTS {
     Node root;
     
-    public Arbre(Joueur pl, Joueur o){
+    public ArbreMCTS(Joueur pl, Joueur o){
         root = new Node(null, pl, o, null);
     }
     
