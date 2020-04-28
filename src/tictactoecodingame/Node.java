@@ -12,32 +12,18 @@ import java.util.Iterator;
  * @author timot
  */
 public class Node {
-    Plateau board;
+    Coup coup;
     Joueur player;
     Joueur opponent;
     int visits = 0;
     int wins = 0;
-    Node parent;
     ArrayList<Node> children;
     
-    public Node(Plateau b, Joueur pl, Joueur o, Node pr){
-        board = b;
+    public Node(Coup c, Joueur pl, Joueur o){
+        coup = c;
         player = pl;
         opponent = o;
-        parent = pr;
         children = new ArrayList<>();
-    }
-    
-    public Node(Plateau b){
-        board = b;
-    }
-    
-    public ArrayList<Coup> getCoups(){
-        return board.getListeCoups(player);
-    }
-    
-    public Node parent(){
-        return parent;
     }
     
     public int visits(){
@@ -46,10 +32,6 @@ public class Node {
     
     public int wins(){
         return wins;
-    }
-    
-    public Plateau board(){
-        return board;
     }
     
     public Joueur player(){
@@ -70,10 +52,6 @@ public class Node {
     
     public void addWin(){
         wins++;
-    }
-    
-    public void board(Plateau p){
-        board = p;
     }
     
     public Node nextPlay(){

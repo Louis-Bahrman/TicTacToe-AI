@@ -17,7 +17,7 @@ public class Fraction {
         if(visits == 0){
             return Integer.MAX_VALUE;
         }
-        return (wins/visits) * 1.41 * Math.sqrt(Math.log(parentVisit) / visits);
+        return (wins/visits) + 1.41 * Math.sqrt(Math.log(parentVisit) / visits);
     }
     
     public static Node bestChild(Node root){

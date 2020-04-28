@@ -13,7 +13,7 @@ public class ArbreMCTS {
     Node root;
     
     public ArbreMCTS(Joueur pl, Joueur o){
-        root = new Node(null, pl, o, null);
+        root = new Node(null, pl, o);
     }
     
     public Node root(){

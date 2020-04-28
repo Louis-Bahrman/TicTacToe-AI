@@ -38,8 +38,8 @@ public class AlgoRechercheMCTS extends AlgoRecherche {
             }
             Joueur winner = simulate(nextNode);
             update(winner, nextNode);
+            
         }
-        
         Node nextPlay = root.nextPlay();
         search.root(nextPlay);
         return nextPlay.board().getDernierCoup();
@@ -56,7 +56,7 @@ public class AlgoRechercheMCTS extends AlgoRecherche {
     private void expansion(Node leaf){
         ArrayList<Coup> coups = leaf.getCoups();
         Iterator<Coup> coup = coups.iterator();
-        Plateau leafPlateau = (new Node(leaf.board(), null, null, null)).board();
+        Plateau leafPlateau = leaf.board();
         Coup currentCoup;
         while(coup.hasNext()){
             currentCoup = coup.next();
@@ -68,8 +68,7 @@ public class AlgoRechercheMCTS extends AlgoRecherche {
     }
     
     private Joueur simulate(Node node){
-        Node tmp = new Node(node.board(), node.player(), node.opponent(), node.parent());
-        Plateau board = tmp.board();
+        Plateau board = node.board();
         Joueur p1 = node.player();Joueur p2 = node.opponent();
         Joueur currentPlayer = node.player();
         Random seed = new Random();
@@ -90,7 +89,7 @@ public class AlgoRechercheMCTS extends AlgoRecherche {
         Node currentNode = node;
         while(currentNode != null){
             currentNode.addVisit();
-            if(currentNode.player() == winner){
+            if(currentNode.player().equals(winner)){
                 currentNode.addWin();
             }
             currentNode = currentNode.parent();

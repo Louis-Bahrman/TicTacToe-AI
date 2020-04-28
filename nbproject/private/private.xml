@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/tictactoecodingame/AlgoRechercheMCTS.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>97</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/tmp/src/tictactoecodingame/Fraction.java</file>
-            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/tmp/src/tictactoecodingame/Node.java</file>
-            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/tmp/src/tictactoecodingame/Arbre.java</file>
-            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/tmp/src/tictactoecodingame/AlgoRechercheMCTS.java</file>
+            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/TicTacToe/src/tictactoecodingame/ArbreMCTS.java</file>
+            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/TicTacToe/src/tictactoecodingame/Node.java</file>
+            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/TicTacToe/src/tictactoecodingame/Fraction.java</file>
+            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/TicTacToe/src/tictactoecodingame/AlgoRechercheMCTS.java</file>
+            <file>file:/C:/Users/timot/OneDrive/Desktop/2019-2020/Projet-Informatique/TicTacToe/src/tictactoecodingame/Player.java</file>
         </group>
     </open-files>
 </project-private>

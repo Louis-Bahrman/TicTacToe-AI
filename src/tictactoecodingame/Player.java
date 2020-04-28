@@ -18,13 +18,13 @@ public class Player {
         
         // Remplacer ici l'algorithme aléatoire par votre algorithme. 
         // Créer une nouvelle classe qui hérite de la class AlgoRecherche
-        AlgoRechercheAleatoire alea  = new AlgoRechercheAleatoire( );   // L'ordinateur joue au hasard
+        AlgoRechercheMCTS alea  = new AlgoRechercheMCTS(joueurOrdi, humain);   // L'ordinateur joue au hasard
         joueurOrdi.setAlgoRecherche(alea);                              
              
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
          
 
-        Arbitre a = new Arbitre(grille, joueurOrdi , joueurOrdi );
+        Arbitre a = new Arbitre(grille, humain , joueurOrdi );
 
 //        Arbitre a = new Arbitre(grille, joueurOrdi , humain );
        
@@ -32,6 +32,7 @@ public class Player {
        
        // Pour lancer un tournooi de 100 parties en affichant la grille du jeu
         //a.startTournament(1000 , false);
+       
         
     }
 }
