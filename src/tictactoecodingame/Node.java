@@ -12,12 +12,12 @@ import java.util.Iterator;
  * @author timot
  */
 public class Node {
-    Coup coup;
-    Joueur player;
-    Joueur opponent;
-    int visits = 0;
-    int wins = 0;
-    ArrayList<Node> children;
+    private Coup coup;
+    private final Joueur player;
+    private final Joueur opponent;
+    private int visits = 0;
+    private int wins = 0;
+    private final ArrayList<Node> children;
     
     public Node(Coup c, Joueur pl, Joueur o){
         coup = c;
@@ -46,8 +46,12 @@ public class Node {
         return children;
     }
 
-        public Coup coup(){
+    public Coup coup(){
         return coup;
+    }
+    
+    public void coup(Coup c){
+        coup = c;
     }
        
     public void addVisit(){
@@ -57,20 +61,24 @@ public class Node {
     public void addWin(){
         wins++;
     }
+    
+    public double winrate(){
+        if(visits == 0){
+            return 0;
+        }else{
+            return wins/visits;
+        }
+    }
      
     public Node nextPlay(){
         Node bestNode = null;
-        double winrate = 0;
+        double winrate = Double.NEGATIVE_INFINITY;
         Iterator<Node> child = children.iterator();
         Node currentNode; double currentWinrate;
         while(child.hasNext()){
             currentNode = child.next();
-            if(currentNode.visits == 0 ){
-                currentWinrate = 0;
-            }else{
-                currentWinrate = currentNode.wins() / currentNode.visits();
-            }
-            if( currentWinrate > winrate){
+            currentWinrate = currentNode.winrate();
+            if(currentWinrate > winrate){
                 winrate = currentWinrate;
                 bestNode = currentNode;
             }
