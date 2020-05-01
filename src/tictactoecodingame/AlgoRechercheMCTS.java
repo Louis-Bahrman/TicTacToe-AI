@@ -15,34 +15,35 @@ import java.util.Random;
  */
 public class AlgoRechercheMCTS extends AlgoRecherche {
     ArbreMCTS search;
+    int maxIterations;
     
-    public AlgoRechercheMCTS(Joueur player, Joueur opponent){
+    public AlgoRechercheMCTS(Joueur player, Joueur opponent, int m){
         search = new ArbreMCTS(player, opponent);
+        maxIterations = m;
     }
     
     @Override
     public Coup meilleurCoup(Plateau _plateau, Joueur _joueur, boolean _ponder) {
-        search = new ArbreMCTS(search.root().player(), search.root().opponent());
         Node root = search.root();
-        root.board(_plateau);
+        _plateau.sauvegardePosition(0);
         int iterations = 0;
         Random seed = new Random();
-        while(iterations < 1){
+        while(iterations < maxIterations){
             iterations++;
             Node nextNode = selection(root);
-            if(!nextNode.board().partieTerminee()){
-                expansion(nextNode);
+            if(!_plateau.partieTerminee()){
+                expansion(nextNode, _plateau);
             }
             if(!nextNode.children().isEmpty()){
                 nextNode = nextNode.children().get(seed.nextInt(nextNode.children().size()));
             }
-            Joueur winner = simulate(nextNode);
+            Joueur winner = simulate(nextNode, _plateau);
             update(winner, nextNode);
-            
+            _plateau.restaurePosition(0);
         }
         Node nextPlay = root.nextPlay();
         search.root(nextPlay);
-        return nextPlay.board().getDernierCoup();
+        return nextPlay.coup();
     }
     
     private Node selection(Node root){
@@ -53,28 +54,26 @@ public class AlgoRechercheMCTS extends AlgoRecherche {
         return currentNode;
     }
     
-    private void expansion(Node leaf){
-        ArrayList<Coup> coups = leaf.getCoups();
+    private void expansion(Node leaf, Plateau leafPlateau){
+        ArrayList<Coup> coups = leafPlateau.getListeCoups(leaf.player());
         Iterator<Coup> coup = coups.iterator();
-        Plateau leafPlateau = leaf.board();
         Coup currentCoup;
         while(coup.hasNext()){
             currentCoup = coup.next();
-            leafPlateau.joueCoup(currentCoup);
-            Node newLeaf = new Node(leafPlateau, leaf.opponent(), leaf.player(), leaf);
-            leafPlateau.annuleDernierCoup();
+            Node newLeaf = new Node(currentCoup, leaf.opponent(), leaf.player());
             leaf.children().add(newLeaf);
         }
     }
     
-    private Joueur simulate(Node node){
-        Plateau board = node.board();
+    private Joueur simulate(Node node, Plateau board){
         Joueur p1 = node.player();Joueur p2 = node.opponent();
         Joueur currentPlayer = node.player();
         Random seed = new Random();
+        Coup coup;
+        ArrayList<Coup> coups;
         while(!board.partieTerminee()){
-            ArrayList<Coup> coups = board.getListeCoups(currentPlayer);
-            Coup coup = coups.get(seed.nextInt(coups.size()));
+            coups = board.getListeCoups(currentPlayer);
+            coup = coups.get(seed.nextInt(coups.size()));
             board.joueCoup(coup);
             if(currentPlayer.equals(p1)){
                 currentPlayer = p2;

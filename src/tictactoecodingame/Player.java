@@ -18,7 +18,7 @@ public class Player {
         
         // Remplacer ici l'algorithme aléatoire par votre algorithme. 
         // Créer une nouvelle classe qui hérite de la class AlgoRecherche
-        AlgoRechercheMCTS alea  = new AlgoRechercheMCTS(joueurOrdi, humain);   // L'ordinateur joue au hasard
+        AlgoRechercheMCTS alea  = new AlgoRechercheMCTS(joueurOrdi, humain, 100);   // L'ordinateur joue au hasard
         joueurOrdi.setAlgoRecherche(alea);                              
              
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();

@@ -45,7 +45,11 @@ public class Node {
     public ArrayList<Node> children(){
         return children;
     }
-    
+
+        public Coup coup(){
+        return coup;
+    }
+       
     public void addVisit(){
         visits++;
     }
@@ -53,7 +57,7 @@ public class Node {
     public void addWin(){
         wins++;
     }
-    
+     
     public Node nextPlay(){
         Node bestNode = null;
         double winrate = 0;
