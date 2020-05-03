@@ -103,7 +103,7 @@ public class Node {
         if(visits == 0){
             return 0;
         }else{
-            return (wins + 0.3*draws)/visits;
+            return (wins + 0.5*draws)/visits;
         }
     }
     
