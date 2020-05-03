@@ -30,6 +30,7 @@ public abstract class Joueur {
 	}
 	abstract public Coup joue( Plateau p_plateau );
 	
+        @Override
 	public String toString() {
 		return nom;
 	}

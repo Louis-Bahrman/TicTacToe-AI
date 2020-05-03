@@ -51,11 +51,7 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
         return depth;
     }
     
-    public Joueur[] getPlayers(Joueur joueur1, Joueur joueur2){
-        Joueur[] players = {target, opponent};
-        return players;
-    }
-    
+    @Override
     public Coup meilleurCoup( Plateau _plateau , Joueur _joueur , boolean _ponder ){
         //On part du principe que la partie n'est pas terminée donc qu'il reste au moins un coup
         plateau = _plateau;
@@ -92,7 +88,6 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
             plateau.sauvegardePosition(currentDepth);
         }
         //On crée les nouveau noeuds à partir des coups disponible du point de vue du joueur à ce niveau de l'arbre
-        ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
         if(plateau.partieTerminee()){
             Joueur winner = plateau.vainqueur();
             if(winner == target){
@@ -110,7 +105,8 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
             t.setvalue(c);
         }
         else{
-            ArrayList<ArbreMinMax> fils = new ArrayList<ArbreMinMax>();
+            ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
+            ArrayList<ArbreMinMax> fils = new ArrayList<>();
             for(int i=0; i<coups.size();i++){
                 ArbreMinMax a = new ArbreMinMax(coups.get(i));
                 if(currentJoueur == target){

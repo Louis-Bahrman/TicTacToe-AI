@@ -21,9 +21,10 @@ public class GrilleTicTacToe9x9 extends Plateau {
     int nbPostionSauvegarde;
 
     CoupTicTacToe dernierCoup;
-    CoupTicTacToe dernierCoupSav;
+    CoupTicTacToe[] dernierCoupSav = new CoupTicTacToe[100];
     Joueur vainqueur;
-    boolean grilleGagnee , grilleGagneeSav;  // vrai si dernier coup gagne une grille
+    boolean grilleGagnee ;
+    boolean[] grilleGagneeSav = new boolean[100];  // vrai si dernier coup gagne une grille
 
     @Override
     public void init() {
@@ -296,8 +297,8 @@ public class GrilleTicTacToe9x9 extends Plateau {
                 grille3x3Sav[_index][c][l] = grille3x3[c][l];
             }
         }
-        dernierCoupSav = dernierCoup;
-        grilleGagneeSav = grilleGagnee;
+        dernierCoupSav[_index] = dernierCoup;
+        grilleGagneeSav[_index] = grilleGagnee;
        
 
     }
@@ -317,8 +318,8 @@ public class GrilleTicTacToe9x9 extends Plateau {
             }
         }
         vainqueur = null;
-        dernierCoup = dernierCoupSav;
-        grilleGagnee = grilleGagneeSav;
+        dernierCoup = dernierCoupSav[_index];
+        grilleGagnee = grilleGagneeSav[_index];
     }
 
     private boolean isGrillePleine() {

@@ -6,7 +6,6 @@
 package tictactoecodingame;
 
 import java.util.ArrayList;
-import static tictactoecodingame.Generator.random_tests;
 
 /**
  *
