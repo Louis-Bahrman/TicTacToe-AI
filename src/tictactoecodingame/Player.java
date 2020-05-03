@@ -12,27 +12,54 @@ public class Player {
 
     public static void main(String args[]) {
         
-        JoueurHumain humain = new JoueurHumain("Humain");     
-        JoueurOrdi joueurOrdi = new JoueurOrdi("Ordi");
-       
+        //JoueurHumain humain = new JoueurHumain("Humain");  
+        //JoueurOrdi joueurOrdiRnd = new JoueurOrdi("OrdiRnd");
+        JoueurOrdi joueurOrdiMCTS1000 = new JoueurOrdi("OrdiMCTS1000");
+        JoueurOrdi joueurOrdiMCTS5000 = new JoueurOrdi("OrdiMCTS5000");
+        //JoueurOrdi joueurOrdiMCTS10000 = new JoueurOrdi("OrdiMCTS10000");
+        double coeff = Math.sqrt(2);
         
-        // Remplacer ici l'algorithme aléatoire par votre algorithme. 
-        // Créer une nouvelle classe qui hérite de la class AlgoRecherche
-        AlgoRechercheMCTS alea  = new AlgoRechercheMCTS(joueurOrdi, humain, 1000,0.1);
-        joueurOrdi.setAlgoRecherche(alea);                              
-             
         GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
-         
+        /*
+        AlgoRechercheAleatoire aleaRnd = new AlgoRechercheAleatoire();
+        joueurOrdiRnd.setAlgoRecherche(aleaRnd);
+        */
+        AlgoRechercheMCTS mcts1000 = new AlgoRechercheMCTS(joueurOrdiMCTS1000, joueurOrdiMCTS5000, 1000, coeff, grille.getNbLignes(), grille.getNbColonnes(), true);
+        joueurOrdiMCTS1000.setAlgoRecherche(mcts1000);
+        
+        AlgoRechercheMCTS mcts5000 = new AlgoRechercheMCTS(joueurOrdiMCTS5000, joueurOrdiMCTS1000, 5000, coeff, grille.getNbLignes(), grille.getNbColonnes(), true);
+        joueurOrdiMCTS5000.setAlgoRecherche(mcts5000);
+        
+        /*
+        AlgoRechercheMCTS mcts10000  = new AlgoRechercheMCTS(joueurOrdiMCTS10000, joueurOrdiMCTS1000, 10000,coeff, grille.getNbLignes(), grille.getNbColonnes(), false);
+        joueurOrdiMCTS10000.setAlgoRecherche(mcts10000);                              
+        */
 
-        Arbitre a = new Arbitre(grille, humain , joueurOrdi );
-
-//        Arbitre a = new Arbitre(grille, joueurOrdi , humain );
+        Arbitre a = new Arbitre(grille,  joueurOrdiMCTS1000, joueurOrdiMCTS5000);
+        //a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
        
-        a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
-       
-       // Pour lancer un tournooi de 100 parties en affichant la grille du jeu
-        //a.startTournament(1000 , false);
-       
+        // Pour lancer un tournoi de 100 parties en affichant la grille du jeu
+        
+        int[] results = {0,0,0};Joueur winner;
+        for(int i = 0; i < 100; i++){
+            System.out.println("Round " + i);
+            winner = a.startTournament(100 , false);            
+            if(winner != null){
+                 if(winner.equals(joueurOrdiMCTS1000)){
+                     results[0]++;
+                 }else{
+                     results[1]++;
+                 }           
+            }else{
+                results[2]++;
+            }
+        }
+        System.out.println();
+        
+        System.out.println("1000 vs 5000");
+        System.out.println("Ordi MCTS 1000 :" + results[0]);
+        System.out.println("Ordi MCTS 5000 :" + results[1]);
+        System.out.println("Draws :" + results[2]);
         
     }
 }

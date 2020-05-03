@@ -7,11 +7,16 @@ package tictactoecodingame;
 
 /**
  *
- * @author timot
+ * <div>Cette classe englobe la structure de noeud en un arbre, et permets d'agir sur sa racine.</div>
  */
 public class ArbreMCTS {
     private Node root;
     
+    /**
+     * <div>Initialisation d'un arbre : La racine représente un plateau vide.</div>
+     * @param pl Le joueur qui va jouer.
+     * @param o  Le joueur qui vient de jouer.
+     */
     public ArbreMCTS(Joueur pl, Joueur o){
         root = new Node(null, pl, o);
     }
