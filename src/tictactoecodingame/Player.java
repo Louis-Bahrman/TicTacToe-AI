@@ -12,15 +12,22 @@ public class Player {
 
     public static void main(String args[]) {
         
-        //JoueurHumain humain = new JoueurHumain("Humain");     
+        /*
+        Il faut choisir deux joueurs parmi les possibilités ci-dessous car l'id est différent pour chaque joueur et il
+        fixe le jeton d'où la nécéssité d'en avoir deux distincts.
+        */
+        // JoueurHumain humain1 = new JoueurHumain("Humain1");
+        // JoueurHumain humain2 = new JoueurHumain("Humain2");
         JoueurOrdi joueurOrdi1 = new JoueurOrdi("Ordi1");
         JoueurOrdi joueurOrdi2 = new JoueurOrdi("Ordi2");
-        //Il faut deux joueurs car l'id fixe le jeton
         
-        GrilleTicTacToe9x9 grille = new GrilleTicTacToe9x9();
+        //Grille de tictactoe classique
+        GrilleTicTacToe3x3 grille = new GrilleTicTacToe3x3();
         
-        MemoireMinMax.setup(grille);
-
+        //Grille d'ultimate tictactoe
+        //GrilleTicTacToe9x9 grille = new GrilleTicTacToe9x9();
+       
+        
         AlgoRechercheMinMax minmax  = new AlgoRechercheMinMax(3, 10, joueurOrdi1, joueurOrdi2, true);
         AlgoRechercheMCTS mcts1000 = new AlgoRechercheMCTS(joueurOrdi2, joueurOrdi1, 1000, Math.sqrt(2), grille.getNbLignes(), grille.getNbColonnes(), false);
         
@@ -33,10 +40,10 @@ public class Player {
 
         //Arbitre a = new Arbitre(grille, joueurOrdi , humain );
        
-        a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
+        //a.startNewGame(true);    // Demarre une partie en affichant la grille du jeu
        
-       // Pour lancer un tournooi de 100 parties en affichant la grille du jeu
-        //a.startTournament(1000 , false);
+       // Pour lancer un tournooi de 1000 parties sans afficher la grille du jeu
+        a.startTournament(1000 , false);
         
     }
 }

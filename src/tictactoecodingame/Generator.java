@@ -42,9 +42,11 @@ public class Generator {
         opponent.forceId(i);
         
         Coup coup;
+        //On mémorise la position du plateau à partir du point d'étude pour le réitialiser à chaque nouevelle simultaion
         plateau.sauvegardePosition(99);
         for(i=0; i<nb_tests;i++){
             while (!plateau.partieTerminee()) {
+                //Tant que la partie n'est pas terminée on joue un coup aléatoirement
                 coup = currentPlayer.joue(plateau);
 
                 plateau.joueCoup(coup);
@@ -58,6 +60,7 @@ public class Generator {
             }
 
             Joueur vainqueur = plateau.vainqueur();
+            //Si le joueur cible est vainqueur on incrémente l'évaluation, s'il perd on al décrémente, si le match est nul on ne fait rien
             if(vainqueur != null){
                 if ( vainqueur.getIdJoueur() == target.getIdJoueur() )
                     c++;
