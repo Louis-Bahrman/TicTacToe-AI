@@ -14,6 +14,9 @@ package tictactoecodingame;
  * mais on ne peut pas l'utiliser dès le début, il faut beaucoup de données sinon la précision de la recherche risque dêtre
  * dégradée par l'imprécision des coefficients.</p><p>Les coeffiencients sont multipliés à la valeur des coups tentés sur une
  * case selon des reglès spécifique pour conserver l'ordre malgré les différences de signes.</p>
+ * <p>Cette amélioration est incomptablie avec CodinGame dans la fafonc dont elle est implémentée dans la mesure
+ * où elle utilise plusieurs parties et apporte une modification à la classe arbitre pour pouvoir faire un apprentissage
+ * progressif dans les parties d'un tournoi.</p>
  */
 public class MemoireMinMax {
     private static int mode;
@@ -39,6 +42,12 @@ public class MemoireMinMax {
         return seuil;
     }
     
+    /**
+     * <div>Fonction d'apprentissage de la mémorisation. On sauvegarde les positions prises par le gagnant et le perdant pour alimenter les coefficients.
+     * Si la partie est nulle, elle n'apporte pas d'informations pour la mémorisation. Pour chaque case, on ajoute 1 pour chaque partie gagnée ou ce coup est joué
+     * par le gagnant et on retire 1 si ce coup est joué par le perdant. On divise par le total de parties mémorisées.</div>
+     * @param grille 
+     */
     public static void learn(Plateau grille){
         if(grille.partieNulle()){
             return;
@@ -47,7 +56,7 @@ public class MemoireMinMax {
             //Le nombre de partie analysées est conservé pour garder des coefficients entre -1 et 1
             state++;
             for(int i=0; i<mode; i++){
-                for(int j=0; j<mode; i++){
+                for(int j=0; j<mode; j++){
                     Piece piece = grille.getPiece(new Case(j,i));
                     if(piece == null){
                         continue;
@@ -63,7 +72,15 @@ public class MemoireMinMax {
         }
     }
     
+    /**
+     * <div>Fonction d'application du coefficient. Cette fonction utilise la note mémorisée pour une case pour moduler la valeur d'un coup.</div>
+     * @param coup
+     * @param ligne
+     * @param colonne
+     * @return 
+     */
     public static double eval(double coup, int ligne, int colonne){
+        //On n'utilise la mémoire des parties précédente qu'apèrs un certain nombre de partie jouées sans quoi les données qu'elle fournit ne sont pas significatives
         if(state < seuil){
             return coup;
         }

@@ -71,6 +71,7 @@ public class Arbitre {
     }
     
     public void startTournament( int _nbPartie , boolean _trace) {
+        //La mémorisation ne se fait que si l'un des deux joueurs est une IA utilisant l'algo MinMax et que dans les tournois car il faut jouer plusieurs parties pour qu'elle soit utile
         boolean mem = false;
         if(joueur1 instanceof JoueurOrdi){
             AlgoRecherche algo = ((JoueurOrdi)joueur1).getAlgoRecherche();
@@ -88,6 +89,8 @@ public class Arbitre {
                 }
             }
         }
+        //On adapte la mémorisation à la taille du plateau
+        MemoireMinMax.setup(plateau);
         double[] nbVictoire = new double[2]; 
         Joueur vainqueur;
         
@@ -98,6 +101,7 @@ public class Arbitre {
         for (int i = 0 ; i < _nbPartie ; i++ ) {
             vainqueur = startNewGame(_trace);
             
+            //Si la mémorisation est activée on l'enrichit avec la partie qui vient d'être jouée
             if(mem){MemoireMinMax.learn(plateau);}
             
             if ( vainqueur == joueur1 ) nbVictoire[0]++;

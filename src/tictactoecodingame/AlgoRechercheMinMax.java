@@ -39,8 +39,8 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
     
     /**
      * <div>Le constructeur principal d'instance de l'algorithme</div>
-     * @param depth La profondeur d'étude déterminites des coups possibles
-     * @param d_gen Le nombre de tests al"atoires réalisés aux feuilles
+     * @param depth La profondeur d'étude déterminites des coups possibles. Entre 1 et 98.
+     * @param d_gen Le nombre de tests al"atoires réalisés aux feuilles. Supérieur à 1.
      * @param joueur1 Le premier Joueur, il faut garder en mémoire qui est le joueur cible, celui dont on souhaite maximiser l'impact
      * @param joueur2 Son opposant, les deux joueur doivent être connus pour dubpliquer leur jetons
      * @param mem Paramètre indiquant si l'amélioration de mémoire est active.
@@ -48,7 +48,7 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
     public AlgoRechercheMinMax(int depth, int d_gen, Joueur joueur1, Joueur joueur2, boolean mem){
         this.depth = depth;
         this.d_gen = d_gen;
-        //Cet algo ne marche qu'avec des jeux à deux joueurs
+        //Cet algo ne marche qu'avec des jeux à deux joueurs où alterne les tours car on cher à maximiser l'impact d'un joueur cible un tour sur deux en minimisant l'impact de son opposant le reste du temps
         target = joueur1;
         opponent = joueur2;
         this.mem = mem;
@@ -87,13 +87,18 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
     
     @Override
     public Coup meilleurCoup( Plateau _plateau , Joueur _joueur , boolean _ponder ){
-        //On part du principe que la partie n'est pas terminée donc qu'il reste au moins un coup
+        //On part du principe que la partie n'est pas terminée donc qu'il reste au moins un coup sans quoi la méthode ne peux fonctionner car la racine n'a pas de fils
         plateau = _plateau;
         plateau.sauvegardePosition(0);
+        //On détermine du point de vue de quel joueur on évalue la valeur du coup
         if(target != _joueur){
         opponent = target;
         target = _joueur;
         }
+        /*
+        On construit l'arbre des coups récursivement avec une fonction auxiliaire. La même méthode évalue la valeur des feuilles
+        on les remonte avec l'algo du MinMax
+        */
         ArbreMinMax explore = new ArbreMinMax();
         builder(explore, target, 0);
         explore.MinMax(0);
@@ -106,7 +111,8 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
                 explore.getfils().get(i).setvalue(MemoireMinMax.eval(coup, ligne, colonne));
             }
         }
-        double m = Double.MIN_VALUE;
+        //On observe les coups de la racine et leur valeur pour choisir au final quel est le meilleur coup pour le joueur cible
+        double m = (double)Integer.MIN_VALUE;
         Coup c = null;
         for(int i = 0; i < explore.getfils().size() ; i++){
             double n = explore.getfils().get(i).getvalue();
@@ -115,18 +121,24 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
                 c = explore.getfils().get(i).getcoup();
             }
         }
+        //On restaure le plateau qui a été modifiée pour évaluer la avleur des coups
         plateau.restaurePosition(0);
         return c;
     }
     
     /**
-     * <div>Fonction récursive de création et de parcours de l'abre des coups possibles</div>
+     * <div>Fonction récursive de création et de parcours de l'abre des coups possibles. Le parcours se fait en profondeur et on associe
+     * aux feuilles une valeur estimant la qualité du coup que l'on remontera avec l'algo MinMax</div>
      * @param t L'arbre ou le sous-arbre parcouru
      * @param currentJoueur Le joueur concerné à ce niveau de pronfondeur
      * @param currentDepth Permet de savoir si on approche de la fin de partie et si on doit passer au remplissage des noeuds
      */
     private void builder(ArbreMinMax t,Joueur currentJoueur, int currentDepth){
-        //On commence par mettre le plateau à jour en fonction du coup théorique joué
+        /*
+        A chaque appel récursif on arrive sur un nouveau noeud qui représente un coup. On ne conserve pas les parents donc on peut savoir les coups prcédent.
+        Cependant la méthode de parcours en profondeur préfixe implique que les parents on été visité avant et donc on a pu mémoriser les états de plateau correspondant.
+        On commence par mettre le plateau à jour en fonction du coup théorique joué
+        */
         if(currentDepth == 0){
             plateau.restaurePosition(0);
         }
@@ -136,8 +148,9 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
             plateau.joueCoup(t.getcoup());
             plateau.sauvegardePosition(currentDepth);
         }
-        //On crée les nouveau noeuds à partir des coups disponible du point de vue du joueur à ce niveau de l'arbre
+        //On crée les nouveau noeuds à partir des coups disponible du point de vue du joueur à ce niveau de l'arbre. Il y a 3 cas.
         if(plateau.partieTerminee()){
+            //Si la partie est terminée on est sur une feuille et on attribue directement une valeur au coup en fonction du vainqueur de la partie par rapport au joueur cible de l'algo
             Joueur winner = plateau.vainqueur();
             if(winner == target){
                 t.setvalue(1.0);
@@ -150,10 +163,17 @@ public class AlgoRechercheMinMax extends AlgoRecherche{
             }
         }
         else if (currentDepth == depth){
+            //Si on atteinte la profondeur d'évaluation demandée on arrete l'eapansion en profondeur et on crée une feuille auquel on associe une valeur estimée en testants des fin de partie aléatoires à partir de ce point
             double c = (double)Generator.random_tests(plateau, d_gen, target);
             t.setvalue(c);
         }
         else{
+            /*
+            Dans le dernier cas on se situe sur un noeud interne et on crée les nouveau fils à partir des coups possibles.
+            On recrée la liste des coups possibles à chaque fois pour que l'algo soit adaptable à d'autres jeu. En effet, les coups possibles
+            peuvent être différents pour les deux joueurs à chaque tour en fonction de comment l'adversaire à joué au tour précédent.
+            Cela permet notamment un algo unique pour le tictactoe classique et l'ultimate tictactoe.
+            */
             ArrayList<Coup> coups = plateau.getListeCoups(currentJoueur);
             ArrayList<ArbreMinMax> fils = new ArrayList<>();
             for(int i=0; i<coups.size();i++){
