@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ArbreMinMax {
     
-    protected int value;
+    protected double value;
     //Coup théorique joué à ce noeud
     protected Coup coup;
     protected ArrayList<Coup> coups;
@@ -28,14 +28,14 @@ public class ArbreMinMax {
         this.coup = coup;
     }
     
-    public ArbreMinMax(int value, ArrayList coups, ArrayList fils){
+    public ArbreMinMax(double value, ArrayList coups, ArrayList fils){
         this.value = value;
         this.fils = fils;
         this.coups = coups;
     }
     
     
-    public ArbreMinMax(int value, Plateau _plateau, Joueur _joueur){
+    public ArbreMinMax(double value, Plateau _plateau, Joueur _joueur){
         this.value = value;
         this.coups = _plateau.getListeCoups(_joueur) ;
         int a = coups.size();
@@ -47,13 +47,13 @@ public class ArbreMinMax {
         
     }
     
-    public ArbreMinMax(int value){
+    public ArbreMinMax(double value){
         this.value = value;
     }
 
     
     // Les accesseurs :
-    public int getvalue(){
+    public double getvalue(){
         return(value);
     }
     
@@ -76,7 +76,7 @@ public class ArbreMinMax {
     
     
     //Des choses sans nom :
-    public void setvalue(int value){
+    public void setvalue(double value){
         this.value = value;
     }
     
@@ -113,11 +113,11 @@ public class ArbreMinMax {
         }
     }
     
-    public int Min(){
-        int m = Integer.MAX_VALUE;
+    public double Min(){
+        double m = Double.MAX_VALUE;
         int a = this.getfils().size();
         for(int i = 0; i < a ; i++){
-            int n = this.getfils().get(i).getvalue();
+            double n = this.getfils().get(i).getvalue();
             if(n < m){
                 m = n;
             }
@@ -125,11 +125,11 @@ public class ArbreMinMax {
         return m;
     }
     
-    public int Max(){
-        int m = Integer.MIN_VALUE;
+    public double Max(){
+        double m = Double.MIN_VALUE;
         int a = this.getfils().size();
         for(int i = 0; i < a ; i++){
-            int n = this.getfils().get(i).getvalue();
+            double n = this.getfils().get(i).getvalue();
             if(n > m){
                 m = n;
             }
@@ -148,12 +148,12 @@ public class ArbreMinMax {
             }
             if(c%2 == 0){
                 //On attribue le max
-                int m = this.Max();
+                double m = this.Max();
                 this.setvalue(m);   
             }
             else{
                 //On attribue le min
-                int m = this.Min();
+                double m = this.Min();
                 this.setvalue(m);
             }
         }

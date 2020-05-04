@@ -71,6 +71,23 @@ public class Arbitre {
     }
     
     public void startTournament( int _nbPartie , boolean _trace) {
+        boolean mem = false;
+        if(joueur1 instanceof JoueurOrdi){
+            AlgoRecherche algo = ((JoueurOrdi)joueur1).getAlgoRecherche();
+            if (algo instanceof AlgoRechercheMinMax){
+                if(((AlgoRechercheMinMax) algo).getMem()){
+                    mem = true;
+                }
+            }
+        }
+        if(joueur2 instanceof JoueurOrdi){
+            AlgoRecherche algo = ((JoueurOrdi)joueur2).getAlgoRecherche();
+            if (algo instanceof AlgoRechercheMinMax){
+                if(((AlgoRechercheMinMax) algo).getMem()){
+                    mem = true;
+                }
+            }
+        }
         double[] nbVictoire = new double[2]; 
         Joueur vainqueur;
         
@@ -80,6 +97,8 @@ public class Arbitre {
         nbVictoire[0] = nbVictoire[1]  = 0;
         for (int i = 0 ; i < _nbPartie ; i++ ) {
             vainqueur = startNewGame(_trace);
+            
+            if(mem){MemoireMinMax.learn(plateau);}
             
             if ( vainqueur == joueur1 ) nbVictoire[0]++;
             if ( vainqueur == joueur2 ) nbVictoire[1]++;
