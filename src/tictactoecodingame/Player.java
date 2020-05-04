@@ -18,8 +18,10 @@ public class Player {
         //Il faut deux joueurs car l'id fixe le jeton
         
         GrilleTicTacToe9x9 grille = new GrilleTicTacToe9x9();
+        
+        MemoireMinMax.setup(grille);
 
-        AlgoRechercheMinMax minmax  = new AlgoRechercheMinMax(3, 10, joueurOrdi1, joueurOrdi2);
+        AlgoRechercheMinMax minmax  = new AlgoRechercheMinMax(3, 10, joueurOrdi1, joueurOrdi2, true);
         AlgoRechercheMCTS mcts1000 = new AlgoRechercheMCTS(joueurOrdi2, joueurOrdi1, 1000, Math.sqrt(2), grille.getNbLignes(), grille.getNbColonnes(), false);
         
         joueurOrdi1.setAlgoRecherche(minmax);
