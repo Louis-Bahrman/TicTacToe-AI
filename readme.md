@@ -59,7 +59,7 @@ Cette classe implémente la notation d'une position du point de vue d'un joueur 
 
 ### Player
 
-Cette classe contient la méthode **main** du programme. Elle permet d'effectuer des parties ou torunois en local. Les paramètres se règle avec les classes précédemment présentées :
+Cette classe contient la méthode **main** du programme. Elle permet d'effectuer des parties ou tournois en local. Les paramètres se règlent avec les classes précédemment présentées :
 *  Il faut créer deux joueurs distincts selon la composition souhaitée. Soit des JoueurHumain si vous souhaitez participer, soit des JoueurOrdi pour faire jouer les IA ou effectuer des tests
 *  Il faut choisir le plateau de jeu selon le jeu souhaité parmi les deux grilles de TicTacToe et d'ultimate TicTacToe
 *  Il faut ensuite paramétrer les algo recherche voulu pour les IA parmi le MinMax, le MCTS ou l'algo aléatoire et fixer leurs paramètres
