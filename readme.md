@@ -1,9 +1,12 @@
 # Algorithme MinMax et Monte Carlo
-# Objectif
+## Objectif
 
-Votre objectif sera d’implémenter l’algorithme MinMax et l’algorithme MonteCarlo Tree Search sur le jeu TicTacToe présent sur la plateforme [Codingame](https://www.codingame.com/start). Vous partirez d’un code Java existant afin de vous focaliser essentiellement sur ces algorithmes. 
+Notre objectif a été d’implémenter l’algorithme MinMax et l’algorithme MonteCarlo Tree Search sur le jeu TicTacToe et d'Ultimate TicTacToe.
+Les consignes qui nous ont été forunies sont dans le fichier consignes.md et le planning dans Project-monitoring.md.
 
 ## Explications du code
+
+Le fonctionnement détaillée de chaque classe ajoutée et de ses méthodes est donnée dans la doc. On explique ici le rôle des clesses ajoutées et comment l'utilisateur peut jouer ou tester les IA.
 
 ### Player
 
@@ -27,34 +30,36 @@ public Coup meilleurCoup(Plateau _plateau, Joueur _joueur, boolean _ponder) {
     return coups.get(rnd.nextInt( coups.size()));
 }
 ```
+### Arbitre
 
-
-### Plateau
-
-Regarder les méthodes contenues dans cette classe ainsi que les commentaires associés. Cette classe est une classe abstraite qui liste les méthodes nécessaires à la manipulation d’un jeu de plateau à deux joueurs. Vous aurez besoin essentiellement des méthodes suivantes :
-\newpage
-
->- partieTerminee()
->- getListeCoups()
->- vainqueur()
->- joueCoup()
->- sauvegardePosition()
->- restaurePosition()
->- annuleDernierCoup()
->- ….
-
+Cette classe forunit les méthodes pour réaliser des parties et des tournois en local.
 
 ### GrilleTicTacToe3x3
 
-Cette classe représente la grille du jeu TicTacToe de dimension 3x3. Cette classe hérite de Plateau, elle implémente donc toutes les méthodes abstraites présentes dans la classe Plateau. C’est cette grille que vous utiliserez dans un premier temps.
+Cette classe représente la grille du jeu TicTacToe de dimension 3x3 et l'ensemble des méthodes pour jouer dessus, vérifier la validité des coups ou l'état de la partie.
 
 ### GrilleTicTacToe9x9
 
-Cette classe représente la grille du jeu TicTacToe de dimension 9x9. Cette classe hérite de Plateau, elle implémente donc toutes les méthodes abstraites présentes dans la classe Plateau. Cette grille sera utilisée lorsque vous aurez franchi le premier niveau sur Codingame.
+Cette classe représente la grille du jeu Ultimate TicTacToe de dimension 9x9 et l'ensemble des méthodes pour jouer dessus, vérifier la validité des coups ou l'état de la partie.
+
+### JoueurOrdi
+
+Cette classe implémente un joueur IA caractérisé par un ID auto-incrémenté et un algo de recherche que l'on peut choisir.
+
+### JoueurHumain
+
+Cette classe implémente un joueur Humain caractérisé par un ID auto-incrémenté pour permettre à un opérateur de jouer.
 
 ### ArbreMinMax
 
+Cette classe implémente la structure d'arbre, qui est une structure récursive, destinée à la prévision et l'évaluation de coups par l'algorithme du MinMax.
+Elle contient les méthodes pour construire un noeud, référencer ses fils, un ou plusieurs coup et une note évaluant ces coups ainsi que les méthodes nécéssaires à l'algorithme MinMax.
+
 ### ArbreMCTS
+
+Cette classe implémente la structure d'arbre, qui est une structure récursive, destinée à la prévision et l'évaluation de coups par l'algorithme MCTS.
+Elle contient les méthodes pour construire un noeud, référencer ses fils, un ou plusieurs coup et une note évaluant ces coups ainsi que les méthodes nécéssaires à l'algorithme MCTS.
+
 
 ### AlgoRechercheMinMax
 
@@ -66,11 +71,11 @@ Modif sur la classe arbitre
 
 ### Generator
 
-# Tester l'IA en local
+## Tester l'IA en local
 
 La classe Player actuelle vous permet de jouer contre votre IA. Vous pouvez  modifier facilement cette classe afin de faire jouer deux IA l’une contre l’autre.
 
-# Tester l'IA sur Codingame
+## Tester l'IA sur Codingame
 
 Afin de tester votre IA sur *Codingame*, il vous faudra modifier le contenu de la classe **Player** pour être compatible avec le mode de fonctionnement de la plateforme, à savoir récupérer les données en entrée ( code déjà fourni par le site ) et retourner sur la sortie standard votre coup. La classe **Arbitre** ne sera plus nécessaire puisque se sera la plateforme Codingame qui fera office d'arbitre.  La classe **Player** contient également la version pour le bon fonctionnement de votre IA sur Codingame. Il suffit de dé-commenter la partie *Codingame* et commenter le jeu en local
 
@@ -92,11 +97,11 @@ cd <nom_du_répertoire source>
 
 java –jar builder.jar .\tictactoecodingame\Player.java 
 ```
-# Amélioration des algorithmes
+## Amélioration des algorithmes
 
-## Amélioration MCTS
+### Amélioration MCTS
 
-## Amélioration MinMax
+### Amélioration MinMax
 
 
 
