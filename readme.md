@@ -6,7 +6,7 @@ Les consignes qui nous ont été forunies sont dans le fichier consignes.md et l
 
 ## Explications du code
 
-Le fonctionnement détaillée de chaque classe ajoutée et de ses méthodes est donnée dans la doc. On explique ici le rôle des clesses ajoutées et comment l'utilisateur peut jouer ou tester les IA.
+Le fonctionnement détaillée de chaque classe ajoutée et de ses méthodes est donnée dans la doc. On explique ici le rôle des classes ajoutées et comment l'utilisateur peut jouer ou tester les IA.
 
 ### Arbitre
 
@@ -97,7 +97,7 @@ java –jar builder.jar .\tictactoecodingame\Player.java
 
 ### Amélioration MCTS
 
-L'amélioration proposée de l'algo MCTS proposée consiste en une conservation des statistiques dévalution estimées pour les coups d'une partie sur l'autre, elle est intégrée à la classe mais chère en mémoire.
+L'amélioration proposée de l'algo MCTS proposée consiste en une conservation des statistiques d'évalution estimées pour les coups d'une partie sur l'autre, elle est intégrée à la classe mais chère en mémoire.
 
 ### Amélioration MinMax
 
