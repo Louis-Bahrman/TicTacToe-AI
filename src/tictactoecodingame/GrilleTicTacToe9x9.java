@@ -21,6 +21,10 @@ public class GrilleTicTacToe9x9 extends Plateau {
     int nbPostionSauvegarde;
 
     CoupTicTacToe dernierCoup;
+    /*Nous avons dû changer l'implémentation de sauvegarde, car l'implémentation fournie ne sauvegardais qu'un seul dernierCoup,
+    et ammenait donc des problèmes dans le cadre où plusieurs sauvegardes étaient éffectuées et utilisées (restaurer une sauvegarde antérieure
+    fournissait la bonne grille, mais pas le bon dernier coup si une autre sauvegarde avait été effectuée entre temps).
+    */
     CoupTicTacToe[] dernierCoupSav = new CoupTicTacToe[100];
     Joueur vainqueur;
     boolean grilleGagnee ;
